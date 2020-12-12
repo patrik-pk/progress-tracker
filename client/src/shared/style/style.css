@@ -1,0 +1,9 @@
+.auth-form input:-webkit-autofill,
+.auth-form input:-webkit-autofill:hover,
+.auth-form input:-webkit-autofill:focus {
+  border: 1px solid white;
+  -webkit-text-fill-color: #ccc;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+/*# sourceMappingURL=style.css.map */

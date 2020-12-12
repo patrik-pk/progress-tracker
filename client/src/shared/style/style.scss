@@ -1,0 +1,14 @@
+// Workarounds for Styling Components
+
+
+// Styling for autocomplete on auth forms
+.auth-form {
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus {
+        border: 1px solid white;
+        -webkit-text-fill-color: #ccc;
+        // -webkit-box-shadow: 0 0 0px 1000px #000 inset; BG color
+        transition: background-color 5000s ease-in-out 0s;
+    }
+}
