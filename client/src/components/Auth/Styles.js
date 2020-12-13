@@ -7,13 +7,68 @@ import {
     PINK
 } from '../../shared/style/Colors'
 import device from '../../shared/style/MediaQueries'
+import { ReactComponent as Rocket } from '../../img/rocket.svg'
 
 export const AuthSection = styled.section`
+    display: flex;
+    flex-grow: 1;
+    background: ${DARK};
+`
+
+// Image Section - only on large devices (on the left side)
+export const ImageSection = styled.div`
+    display: none;
+    width: 50%;
+    background: ${PINK};
+
+    @media ${device.large} {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+`
+
+export const Heading = styled.h3`
+    width: 75%;
+    margin-top: 8rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: ${DARK};
+
+    @media ${device.extraLarge} {
+        width: 50%;
+    }
+`
+
+export const IconContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 5rem;
+`
+
+export const Icon = styled(Rocket)`
+    width: 60%;
+    fill: ${DARK};
+
+    @media ${device.extraLarge} {
+        width: 40%;
+    }
+`
+
+// Form Section
+export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
-    background: ${DARK};
+    width: 100%;
+
+    @media ${device.large} {
+        width: 50%;
+    }
 `
 
 export const Logo = styled.h3`
@@ -32,8 +87,8 @@ export const Logo = styled.h3`
         font-size: 1.8rem;
     }
 
-    @media ${device.medium} {
-        font-size: 2.1rem;
+    @media ${device.large} {
+        font-size: 1.6rem;
     }
 `
 
@@ -55,8 +110,8 @@ export const OptionLink = styled(NavLink)`
         font-size: 1.2rem;
     }
 
-    @media ${device.medium} {
-        font-size: 1.4rem;
+    @media ${device.large} {
+        font-size: 1rem;
     }
 `
 
@@ -67,10 +122,6 @@ export const AuthForm = styled.form.attrs(props => ({
 
     @media ${device.small} {
         width: 20rem;
-    }
-
-    @media ${device.medium} {
-        width: 24rem;
     }
 `
 
@@ -90,10 +141,9 @@ export const Input = styled.input`
         font-size: 1.2rem;
     }
 
-    @media ${device.medium} {
-        padding: 1rem;
-        font-size: 1.4rem;
-        margin-bottom: 20px;
+    @media ${device.large} {
+        padding: 0.8rem;
+        font-size: 1rem;
     }
 `
 
@@ -104,15 +154,16 @@ export const SubmitButton = styled.button`
     color: white;
     font-size: 1rem;
     border-radius: 1rem;
+    cursor: pointer;
 
     @media ${device.small} {
         padding: 0.9rem;
         font-size: 1.2rem;
     }
 
-    @media ${device.medium} {
-        padding: 1rem;
-        font-size: 1.4rem;
+    @media ${device.large} {
+        padding: 0.8rem;
+        font-size: 1rem;
     }
 `
 
@@ -129,8 +180,8 @@ export const Paragraph = styled.p`
         font-size: 1rem;
     }
 
-    @media ${device.medium} {
-        font-size: 1.25rem;
+    @media ${device.large} {
+        font-size: 0.9rem;
     }
 `
 

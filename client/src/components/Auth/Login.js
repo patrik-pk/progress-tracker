@@ -2,6 +2,11 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
     AuthSection,
+    ImageSection,
+    Heading,
+    IconContainer,
+    Icon,
+    Container,
     Logo,
     Options,
     OptionLink,
@@ -35,39 +40,49 @@ const Login = () => {
 
     return (
         <AuthSection>
-            <Logo>Progress Tracker</Logo>
+            <ImageSection>
+                <Heading>Track your activities and control your progress online</Heading>
 
-            <Options>
-                <OptionLink to='/login'>Sign In</OptionLink>
-                <OptionLink to='/register'>Sign Up</OptionLink>
-            </Options>
+                <IconContainer>
+                    <Icon />
+                </IconContainer>
+            </ImageSection>
 
-            <AuthForm onSubmit={onSubmit} className='auth-form'>
-                <Input
-                    name='email'
-                    type='email'
-                    placeholder='E-mail'
-                    value={email}
-                    onChange={onChange}
-                    required
-                />
-                <Input
-                    name='password'
-                    type='password'
-                    placeholder='Password'
-                    value={password}
-                    onChange={onChange}
-                    required
-                />
-                <SubmitButton type='submit'>Sign In</SubmitButton>
-            </AuthForm>
+            <Container>
+                <Logo>Progress Tracker</Logo>
 
-            <Paragraph>
-                Don't have an account yet?
-                <Link to='/register'>
-                    <Colored> Sign Up </Colored>
-                </Link>
-            </Paragraph>
+                <Options>
+                    <OptionLink to='/login'>Sign In</OptionLink>
+                    <OptionLink to='/register'>Sign Up</OptionLink>
+                </Options>
+
+                <AuthForm onSubmit={onSubmit} className='auth-form'>
+                    <Input
+                        name='email'
+                        type='email'
+                        placeholder='E-mail'
+                        value={email}
+                        onChange={onChange}
+                        required
+                    />
+                    <Input
+                        name='password'
+                        type='password'
+                        placeholder='Password'
+                        value={password}
+                        onChange={onChange}
+                        required
+                    />
+                    <SubmitButton type='submit'>Sign In</SubmitButton>
+                </AuthForm>
+
+                <Paragraph>
+                    Don't have an account yet?
+                    <Link to='/register'>
+                        <Colored> Sign Up </Colored>
+                    </Link>
+                </Paragraph>
+            </Container>
         </AuthSection>
     )
 }
