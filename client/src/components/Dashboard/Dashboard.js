@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+
+import Navbar from '../Navbar/Navbar'
+import {
+    DashboardContainer,
+    Sidebar,
+    Chart
+} from './Styles'
 
 const Dashboard = () => {
     return (
-        <div>
-            Dashboard
-        </div>
+        <Fragment>
+            <Navbar />
+            <DashboardContainer>
+                <Sidebar />
+                <Chart />
+            </DashboardContainer>
+        </Fragment>
     )
 }
 
