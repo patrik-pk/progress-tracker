@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 
 import Navbar from '../Navbar/Navbar'
+import Sidebar from '../Sidebar/Sidebar'
+import Chart from '../Chart/Chart'
 import {
     DashboardContainer,
-    Sidebar,
-    Chart
 } from './Styles'
 
 const Dashboard = () => {

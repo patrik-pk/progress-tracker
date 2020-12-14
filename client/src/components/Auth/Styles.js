@@ -30,9 +30,9 @@ export const ImageSection = styled.div`
 
 export const Heading = styled.h3`
     width: 75%;
-    margin-top: 8rem;
+    margin-top: 130px;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 20px;
     font-weight: normal;
     color: ${DARK};
 
@@ -46,7 +46,7 @@ export const IconContainer = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 5rem;
+    margin-top: 80px;
 `
 
 export const Icon = styled(Rocket)`
@@ -72,32 +72,32 @@ export const Container = styled.div`
 `
 
 export const Logo = styled.h3`
-    margin-top: 2rem;
-    margin-bottom: 3rem;
+    margin-top: 30px;
+    margin-bottom: 50px;
     text-align center;
-    font-size: 1.3rem;
+    font-size: 22px;
     color: ${PINK};
 
     @media ${device.small} {
-        margin-top: 4rem;
-        font-size: 1.6rem;
+        margin-top: 60px;
+        font-size: 26px;
     }
 
     @media ${device.medium} {
-        font-size: 1.8rem;
+        font-size: 28px;
     }
 
     @media ${device.large} {
-        font-size: 1.6rem;
+        font-size: 26px;
     }
 `
 
 export const Options = styled.div`
-    margin-bottom: 4rem;
+    margin-bottom: 60px;
 `
 
 export const OptionLink = styled(NavLink)`
-    padding: 0.5rem 1rem;
+    padding: 8px 16px;
     border-bottom: 1px ${DARK_INACTIVE} solid;
     color: ${DARK_INACTIVE};
 
@@ -107,21 +107,21 @@ export const OptionLink = styled(NavLink)`
     }
 
     @media ${device.small} {
-        font-size: 1.2rem;
+        font-size: 18px;
     }
 
     @media ${device.large} {
-        font-size: 1rem;
+        font-size: 16px;
     }
 `
 
 export const AuthForm = styled.form.attrs(props => ({
     className: props.className
 }))`
-    width: 16rem;
+    width: 250px;
 
     @media ${device.small} {
-        width: 20rem;
+        width: 300px;
     }
 `
 
@@ -129,59 +129,59 @@ export const Input = styled.input`
     width: 100%;
     flex-grow: 1;
     margin-bottom: 15px;
-    padding: 0.7rem;
+    padding: 12px;
     background: transparent;
-    font-size: 1rem;
+    font-size: 16px;
     border: 1px ${LIGHT} solid;
-    border-radius: 1rem;
+    border-radius: 15px;
     color: ${LIGHT};
 
     @media ${device.small} {
-        padding: 0.9rem;
-        font-size: 1.2rem;
+        padding: 14px;
+        font-size: 18px;
     }
 
     @media ${device.large} {
-        padding: 0.8rem;
-        font-size: 1rem;
+        padding: 12px;
+        font-size: 16px;
     }
 `
 
 export const SubmitButton = styled.button`
     width: 100%;
-    padding: 0.75rem 0;
+    padding: 12px 0;
     background: ${PINK};
     color: white;
-    font-size: 1rem;
-    border-radius: 1rem;
+    font-size: 16px;
+    border-radius: 15px;
     cursor: pointer;
 
     @media ${device.small} {
-        padding: 0.9rem;
-        font-size: 1.2rem;
+        padding: 14px;
+        font-size: 18px;
     }
 
     @media ${device.large} {
-        padding: 0.8rem;
-        font-size: 1rem;
+        padding: 12px;
+        font-size: 16px;
     }
 `
 
 export const Paragraph = styled.p`
-    margin-top: 2rem;
-    margin-bottom: 3rem;
-    font-size: 0.85rem;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    font-size: 14px;
     text-align: center;
     color: ${LIGHT};
 
     @media ${device.small} {
-        margin-top: 3rem;
-        margin-bottom: 4rem;
-        font-size: 1rem;
+        margin-top: 50px;
+        margin-bottom: 70px;
+        font-size: 16px;
     }
 
     @media ${device.large} {
-        font-size: 0.9rem;
+        font-size: 14px;
     }
 `
 
