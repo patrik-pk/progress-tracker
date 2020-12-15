@@ -6,6 +6,6 @@ import {
 export const DashboardContainer = styled.div`
     display: flex;
     flex-grow: 1;
-    padding: 30px 30px 0 30px;
+    padding: 30px;
     background: ${DARK_SURFACE};
 `

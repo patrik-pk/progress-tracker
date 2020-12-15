@@ -10,7 +10,6 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 230px;
     height: 400px;
     background: ${DARK};
 `
@@ -20,6 +19,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
+    padding: 0 15px;
 `
 
 export const YearSelect = styled.div`
