@@ -5,14 +5,14 @@ import {
     Heading,
     OptionsList,
     OptionItem,
-    ActualChart,
-    ChartHead,
-    ChartBody,
-    ChartRow,
+    ActualTable,
+    TableHead,
+    TableBody,
+    TableRow,
     RowItem,
 } from './Styles'
 
-const Chart = () => {
+const Table = () => {
     return (
         <Container>
             <TopContainer>
@@ -28,69 +28,85 @@ const Chart = () => {
                 </OptionsList>
             </TopContainer>
 
-            <ActualChart>
-                <ChartHead>
-                    <ChartRow>
+            <ActualTable>
+                <TableHead>
+                    <TableRow className='main'>
                         <RowItem>Day</RowItem>
                         <RowItem>Sleep Time</RowItem>
                         <RowItem>Food</RowItem>
                         <RowItem>Exercise</RowItem>
                         <RowItem>Productive Hours</RowItem>
-                    </ChartRow>
-                </ChartHead>
+                    </TableRow>
+                </TableHead>
 
-                <ChartBody>
-                    <ChartRow>
+                <TableBody>
+                    <TableRow>
                         <RowItem>1</RowItem>
                         <RowItem>22 - 6</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Fullbody 45min</RowItem>
                         <RowItem>2h PROGRESS TRACKER</RowItem>
-                    </ChartRow>
+                    </TableRow>
 
-                    <ChartRow>
+                    <TableRow>
                         <RowItem>2</RowItem>
                         <RowItem>23 - 7</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Fullbody 45min</RowItem>
                         <RowItem>2h PROGRESS TRACKER</RowItem>
-                    </ChartRow>
+                    </TableRow>
 
-                    <ChartRow>
+                    <TableRow>
                         <RowItem>3</RowItem>
                         <RowItem>22 - 6</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Run 30min</RowItem>
                         <RowItem>2h PROGRESS TRACKER</RowItem>
-                    </ChartRow>
+                    </TableRow>
 
-                    <ChartRow>
+                    <TableRow>
                         <RowItem>4</RowItem>
                         <RowItem>22 - 6</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Run 30min</RowItem>
                         <RowItem>2h PROGRESS TRACKER</RowItem>
-                    </ChartRow>
+                    </TableRow>
 
-                    <ChartRow>
+                    <TableRow>
                         <RowItem>5</RowItem>
                         <RowItem>22 - 6</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Run 30min</RowItem>
                         <RowItem>2h PROGRESS TRACKER</RowItem>
-                    </ChartRow>
+                    </TableRow>
 
-                    <ChartRow>
+                    <TableRow>
                         <RowItem>6</RowItem>
                         <RowItem>22 - 6</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Run 30min</RowItem>
                         <RowItem>2h PROGRESS TRACKER</RowItem>
-                    </ChartRow>
-                </ChartBody>
-            </ActualChart>
+                    </TableRow>
+
+                    <TableRow>
+                        <RowItem>6</RowItem>
+                        <RowItem>22 - 6</RowItem>
+                        <RowItem>2300kcal 10/10</RowItem>
+                        <RowItem>Run 30min</RowItem>
+                        <RowItem>2h PROGRESS TRACKER</RowItem>
+                    </TableRow>
+
+                    <TableRow>
+                        <RowItem>6</RowItem>
+                        <RowItem>22 - 6</RowItem>
+                        <RowItem>2300kcal 10/10</RowItem>
+                        <RowItem>Run 30min</RowItem>
+                        <RowItem>2h PROGRESS TRACKER</RowItem>
+                    </TableRow>
+                </TableBody>
+            </ActualTable>
         </Container>
     )
 }
 
-export default Chart
+export default Table

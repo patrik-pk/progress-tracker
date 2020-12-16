@@ -5,10 +5,16 @@ import {
     PINK
 } from '../../shared/style/Colors'
 
+// Height = 100vh - navbar height - 2x padding
 export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    max-height: calc(100vh - 60px - 60px);
     margin-left: 30px;
     padding: 30px;
     background: ${DARK};
+    overflow: hidden;
 `
 
 // TOP ROW
@@ -54,8 +60,8 @@ export const OptionItem = styled.li`
     }
 `
 
-// ACTUAL CHART
-export const ActualChart = styled.table`
+// ACTUAL TABLE
+export const ActualTable = styled.table`
     display: grid;
     border-collapse: collapse;
     grid-template-columns: 
@@ -64,26 +70,40 @@ export const ActualChart = styled.table`
         minmax(150px, 1fr)
         minmax(150px, 1fr)
         minmax(150px, 1fr);
+    grid-auto-rows: 40px;
+    flex-grow: 1;
     margin-top: 30px;
     background: ${DARK_SURFACE};
+    overflow-y: auto;
+    overflow-x: auto;
 `
 
-export const ChartHead = styled.thead`
+export const TableHead = styled.thead`
     display: contents;
 `
 
-export const ChartBody = styled.tbody`
+export const TableBody = styled.tbody`
     display: contents;
 `
 
-export const ChartRow = styled.tr`
+export const TableRow = styled.tr`
     display: contents;
+
+    &.main {
+        td {
+
+        }
+    }
 `
 
 export const RowItem = styled.td`
-    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    border: 1px white solid;
+    color: white;
 `

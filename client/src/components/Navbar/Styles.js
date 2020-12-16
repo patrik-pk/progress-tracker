@@ -11,7 +11,8 @@ export const Navigation = styled.nav`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 60px;
+    min-height: 60px;
+    max-height: 60px;
     padding: 0 20px;
     background: ${DARK};
 `

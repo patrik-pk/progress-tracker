@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 import Navbar from '../Navbar/Navbar'
 import Sidebar from '../Sidebar/Sidebar'
-import Chart from '../Chart/Chart'
+import Table from '../Table/Table'
 import {
     DashboardContainer,
 } from './Styles'
@@ -13,7 +13,7 @@ const Dashboard = () => {
             <Navbar />
             <DashboardContainer>
                 <Sidebar />
-                <Chart />
+                <Table />
             </DashboardContainer>
         </Fragment>
     )
