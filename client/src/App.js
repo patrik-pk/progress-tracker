@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import './shared/style/style.css'
 
 import Login from './components/Auth/Login'
@@ -17,7 +17,8 @@ const App = () => {
                     <Switch>
                         <Route path='/login' component={Login} />
                         <Route path='/register' component={Register} />
-                        <Route component={Dashboard} />
+                        <Route path='/dashboard' component={Dashboard} />
+                        <Route exact path='/' component={props => <Redirect to='/dashboard' />} />
                     </Switch>
                 </PageWrapper>
             </Router>

@@ -1,10 +1,11 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 import {
     DARK,
     DARK_SURFACE,
     PINK,
-} from '../../shared/style/Colors'
-import { ReactComponent as Dropdown } from '../../img/dropdown.svg'
+} from '../../../shared/style/Colors'
+import { ReactComponent as Dropdown } from '../../../img/dropdown.svg'
 
 export const Container = styled.div`
     display: flex;
@@ -52,7 +53,7 @@ export const MonthList = styled.ul`
     margin-top: 15px;
 `
 
-export const MonthItem = styled.li`
+export const MonthItem = styled(NavLink)`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +81,7 @@ export const MonthParagraph = styled.p`
     color: white;
 `
 
-export const AddButton = styled.div`
+export const AddButton = styled(NavLink)`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,6 +95,10 @@ export const AddButton = styled.div`
     transition: 500ms all;
 
     &:hover {
+        background: ${PINK};
+    }
+
+    &.active {
         background: ${PINK};
     }
 `

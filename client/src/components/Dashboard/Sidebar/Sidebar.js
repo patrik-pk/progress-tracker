@@ -13,15 +13,21 @@ import {
 } from './Styles'
 
 const Sidebar = () => {
+    const currentYear = 2020
+
     const months = () => {
         const arr = []
 
         for(let i = 1; i <= 12; i++) {
             const classes = []
             if(i < 6 || i > 8) classes.push('exists')
-            if(i === 1) classes.push('active') 
             arr.push(
-                <MonthItem key={i} className={classes.join(' ')}>
+                <MonthItem 
+                    as={!classes.includes('exists') ? 'li' : ''}
+                    to={`/dashboard/${currentYear}/${i}`} 
+                    key={i} 
+                    className={classes.join(' ')}
+                >
                     <MonthParagraph>{i}</MonthParagraph>
                 </MonthItem>
             )
@@ -34,7 +40,7 @@ const Sidebar = () => {
         <Container>
             <Wrapper>
                 <YearSelect>
-                    <YearParagraph>2020</YearParagraph>
+                    <YearParagraph>{currentYear}</YearParagraph>
                     <Arrow />
                 </YearSelect>
 
@@ -42,7 +48,7 @@ const Sidebar = () => {
                     { months() }
                 </MonthList>
 
-                <AddButton>
+                <AddButton to='/dashboard/add-month'>
                     <AddParagraph>Add</AddParagraph>
                 </AddButton>
             </Wrapper>

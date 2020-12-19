@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import {
     DARK,
     PINK
-} from '../../shared/style/Colors'
-import { ReactComponent as Logout } from '../../img/logout.svg'
+} from '../../../shared/style/Colors'
+import { ReactComponent as Logout } from '../../../img/logout.svg'
 
 export const Navigation = styled.nav`
     display: flex;
