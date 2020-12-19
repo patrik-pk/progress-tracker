@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import {
     DARK,
     DARK_SURFACE,
-    PINK
+    PINK,
 } from '../../shared/style/Colors'
 
 // Height = 100vh - navbar height - 2x padding
@@ -70,16 +70,31 @@ export const ActualTable = styled.table`
         minmax(150px, 1fr)
         minmax(150px, 1fr)
         minmax(150px, 1fr);
-    grid-auto-rows: 40px;
     flex-grow: 1;
+    min-height: 50px;
     margin-top: 30px;
-    background: ${DARK_SURFACE};
     overflow-y: auto;
     overflow-x: auto;
+
+    &::-webkit-scrollbar {
+        width: 16px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: ${DARK_SURFACE};
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: ${PINK};
+    }
 `
 
 export const TableHead = styled.thead`
     display: contents;
+
+    td {
+        background: ${DARK_SURFACE};
+    }
 `
 
 export const TableBody = styled.tbody`
@@ -100,10 +115,9 @@ export const RowItem = styled.td`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 15px;
+    height: 50px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    border: 1px white solid;
     color: white;
 `

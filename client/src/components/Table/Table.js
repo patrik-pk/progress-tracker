@@ -28,9 +28,9 @@ const Table = () => {
                 </OptionsList>
             </TopContainer>
 
-            <ActualTable>
+            <ActualTable className='actual-table'>
                 <TableHead>
-                    <TableRow className='main'>
+                    <TableRow>
                         <RowItem>Day</RowItem>
                         <RowItem>Sleep Time</RowItem>
                         <RowItem>Food</RowItem>
@@ -45,7 +45,7 @@ const Table = () => {
                         <RowItem>22 - 6</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Fullbody 45min</RowItem>
-                        <RowItem>2h PROGRESS TRACKER</RowItem>
+                        <RowItem>2h</RowItem>
                     </TableRow>
 
                     <TableRow>
@@ -53,7 +53,7 @@ const Table = () => {
                         <RowItem>23 - 7</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Fullbody 45min</RowItem>
-                        <RowItem>2h PROGRESS TRACKER</RowItem>
+                        <RowItem>2h</RowItem>
                     </TableRow>
 
                     <TableRow>
@@ -61,7 +61,7 @@ const Table = () => {
                         <RowItem>22 - 6</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Run 30min</RowItem>
-                        <RowItem>2h PROGRESS TRACKER</RowItem>
+                        <RowItem>2h</RowItem>
                     </TableRow>
 
                     <TableRow>
@@ -69,7 +69,7 @@ const Table = () => {
                         <RowItem>22 - 6</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Run 30min</RowItem>
-                        <RowItem>2h PROGRESS TRACKER</RowItem>
+                        <RowItem>2h</RowItem>
                     </TableRow>
 
                     <TableRow>
@@ -77,7 +77,7 @@ const Table = () => {
                         <RowItem>22 - 6</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Run 30min</RowItem>
-                        <RowItem>2h PROGRESS TRACKER</RowItem>
+                        <RowItem>2h</RowItem>
                     </TableRow>
 
                     <TableRow>
@@ -85,25 +85,51 @@ const Table = () => {
                         <RowItem>22 - 6</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Run 30min</RowItem>
-                        <RowItem>2h PROGRESS TRACKER</RowItem>
+                        <RowItem>2h</RowItem>
                     </TableRow>
 
                     <TableRow>
-                        <RowItem>6</RowItem>
+                        <RowItem>7</RowItem>
                         <RowItem>22 - 6</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Run 30min</RowItem>
-                        <RowItem>2h PROGRESS TRACKER</RowItem>
+                        <RowItem>2h</RowItem>
                     </TableRow>
 
                     <TableRow>
-                        <RowItem>6</RowItem>
+                        <RowItem>8</RowItem>
                         <RowItem>22 - 6</RowItem>
                         <RowItem>2300kcal 10/10</RowItem>
                         <RowItem>Run 30min</RowItem>
-                        <RowItem>2h PROGRESS TRACKER</RowItem>
+                        <RowItem>2h</RowItem>
+                    </TableRow>
+
+                    <TableRow>
+                        <RowItem>9</RowItem>
+                        <RowItem>22 - 6</RowItem>
+                        <RowItem>2300kcal 10/10</RowItem>
+                        <RowItem>Run 30min</RowItem>
+                        <RowItem>2h</RowItem>
+                    </TableRow>
+
+                    <TableRow>
+                        <RowItem>10</RowItem>
+                        <RowItem>22 - 6</RowItem>
+                        <RowItem>2300kcal 10/10</RowItem>
+                        <RowItem>Run 30min</RowItem>
+                        <RowItem>2h</RowItem>
                     </TableRow>
                 </TableBody>
+
+                <TableHead>
+                    <TableRow>
+                        <RowItem>Total</RowItem>
+                        <RowItem>-</RowItem>
+                        <RowItem>-</RowItem>
+                        <RowItem>-</RowItem>
+                        <RowItem>60h</RowItem>
+                    </TableRow>
+                </TableHead>
             </ActualTable>
         </Container>
     )
