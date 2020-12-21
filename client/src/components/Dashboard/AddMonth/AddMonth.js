@@ -6,95 +6,106 @@ import {
     InputGroup,
     Paragraph,
     Input,
+    Items,
     ItemContainer,
     Button
 } from './Styles'
 
 const AddMonth = () => {
-    const [items, setItems] = useState([])
+    const [formData, setFormData] = useState({
+        year: '',
+        month: '',
+        items: [
+            'Day'
+        ]
+    })
+
+    const { year, month, items } = formData
+
+    const onChange = (e, index) => {
+        if(typeof index !== 'undefined' && index !== null) {
+            const newFormData = formData
+            newFormData.items[index] = e.target.value
+            setFormData({...newFormData})
+        } else {
+            setFormData({...formData, [e.target.name]: e.target.value})
+        }
+    }
+
+    const onSubmit = e => {
+        e.preventDefault()
+        console.log(formData)
+    }
 
     const addItem = () => {
-        const { length } = items
-
-        if(length < 10) {
-            setItems([...items,
-                <ItemContainer key={length}>
-                    <InputGroup className='item'>
-                        <Paragraph>Item {length + 2}:</Paragraph>
-                        <Input type='text' />
-                    </InputGroup>
-                    <Button onClick={() => removeItem(length - 1)}>-</Button>
-                </ItemContainer>
-            ])
+        if(items.length < 8) { 
+            const newFormData = formData
+            newFormData.items.push('')
+            setFormData({...newFormData})
         }
     }
 
     const removeItem = index => {
-        const filtered = items.filter(item => item.key !== index)
-        // filter.forEach(item => {
-
-        // })
-        setItems(filtered)
+        const newFormData = formData
+        newFormData.items.splice(index, 1)
+        setFormData({...newFormData})
     }
 
-    
-
-    // const items = () => {
-    //     const result = []
-
-    //     for(let i = 0; i < itemsCount - 1; i++) {
-    //         result.push(
-    //             <ItemContainer key={i}>
-    //                 <InputGroup className='item'>
-    //                     <Paragraph>Item {i + 2}:</Paragraph>
-    //                     <Input type='text' />
-    //                 </InputGroup>
-    //                 <Button onClick={removeItem(i)}>-</Button>
-    //             </ItemContainer>
-    //         )
-    //     }
-
-    //     return result
-    // }
+    const itemsClasses = () => {
+        const result = []
+        if(items.length > 4) result.push('grid')
+        if(items.length > 6) result.push('max')
+        return result.join(' ')
+    }
 
     return (
         <Container>
             <Heading>Add New Month</Heading>
 
-            <Form>
+            <Form className='add-month-form' onSubmit={onSubmit}>
                 <Paragraph className='input-heading'>Date</Paragraph>
 
                 <InputGroup>
                     <Paragraph>Year:</Paragraph> 
-                    <Input type='text' /> 
+                    <Input type='text' name='year' onChange={onChange} value={year} /> 
                 </InputGroup>
 
                 <InputGroup>
                     <Paragraph>Month:</Paragraph>
-                    <Input type='text' />
+                    <Input type='text' name='month' onChange={onChange} value={month} />
                 </InputGroup>  
 
                 <Paragraph className='input-heading'>Items</Paragraph>
 
-                <ItemContainer>
-                    <InputGroup className='item'>
-                        <Paragraph>Item 1:</Paragraph>
-                        <Input as='div'>Day</Input>
-                    </InputGroup>
-                    <Button onClick={addItem}>+</Button>
-                </ItemContainer>
+                <Items className={itemsClasses()}>
+                    {items.map((item, index) => {
+                        return (
+                            <ItemContainer key={index}>
+                                <InputGroup className='item'>
+                                    <Paragraph>Item {index + 1}:</Paragraph>
+                                    { 
+                                        index === 0 ?
+                                        <Input as='div'>{item}</Input>
+                                        :
+                                        <Input 
+                                            type='text'  
+                                            onChange={e => onChange(e, index)} 
+                                            value={item} 
+                                        />
+                                    }
+                                </InputGroup>
+                                {
+                                    index === 0 ?
+                                    <Button as='div' onClick={addItem}>+</Button>
+                                    :
+                                    <Button as='div' onClick={() => removeItem(index)}>-</Button>
+                                }
+                            </ItemContainer>
+                        )
+                    })}
+                </Items>
 
-                {/* <ItemContainer>
-                    <InputGroup className='item'>
-                        <Paragraph>Item 2:</Paragraph>
-                        <Input type='text' />
-                    </InputGroup>
-                    <Button>-</Button>
-                </ItemContainer> */}
-
-                { items }
-
-                <Button className='submit'>Submit</Button>
+                <Button className='submit' type='submit'>Submit</Button>
             </Form>    
         </Container>
     )

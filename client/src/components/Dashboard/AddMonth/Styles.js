@@ -56,7 +56,35 @@ export const Input = styled.input`
     border-radius: 15px;
 `
 
-export const ItemContainer = styled.div`
+// TODO: make a better solution for this
+export const Items = styled.ul`
+    max-width: 900px;
+    &.grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        li {
+            &:first-child { order: 0; }
+            &:nth-child(2) { order: 20; }
+            &:nth-child(3) { order: 40; }
+            &:nth-child(4) { order: 10; }
+            &:nth-child(5) { order: 30; }
+            &:nth-child(6) { order: 50; }
+        }
+    }
+
+    &.max {
+        li {
+            &:nth-child(4) { order: 60;  }
+            &:nth-child(5) { order: 10;  }
+            &:nth-child(6) { order: 30;  }
+            &:nth-child(7) { order: 50;  }
+            &:nth-child(8) { order: 70; }
+        }
+    }
+`
+
+export const ItemContainer = styled.li`
     display: flex;
     align-items: center;
     margin-top: 10px;
@@ -66,7 +94,7 @@ export const ItemContainer = styled.div`
     }
 `
 
-export const Button = styled.div`
+export const Button = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,6 +103,8 @@ export const Button = styled.div`
     margin-left: 10px;
     padding: 2px 0;
     background: ${DARK_SURFACE};
+    color: white;
+    font-size: 16px;
     border-radius: 50%;
     cursor: pointer;
     transition: 500ms background;

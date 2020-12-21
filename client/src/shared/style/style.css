@@ -6,4 +6,12 @@
   -webkit-transition: background-color 5000s ease-in-out 0s;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+.add-month-form input:-webkit-autofill,
+.add-month-form input:-webkit-autofill:hover,
+.add-month-form input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
 /*# sourceMappingURL=style.css.map */
