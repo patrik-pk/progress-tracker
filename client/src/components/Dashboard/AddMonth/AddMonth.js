@@ -35,6 +35,13 @@ const AddMonth = () => {
     const onSubmit = e => {
         e.preventDefault()
         console.log(formData)
+        setFormData({
+            year: '',
+            month: '',
+            items: [
+                'Day'
+            ]
+        })
     }
 
     const addItem = () => {

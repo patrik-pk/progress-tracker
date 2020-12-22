@@ -23,7 +23,28 @@ export const Wrapper = styled.div`
     padding: 0 15px;
 `
 
-export const YearSelect = styled.div`
+export const DropdownContainer = styled.div`
+    position: relative;
+    display: inline-block;
+    width: 100%;
+
+    ul {
+        display: none;
+    }
+
+    &.active {
+        ul {
+            display: block;
+        }
+
+        .dropdown-btn {
+            border-radius: 15px 15px 0 0;
+        }
+    }
+`
+
+export const DropdownButton = styled.div`
+    position: relative;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -32,10 +53,42 @@ export const YearSelect = styled.div`
     color: white;
     cursor: pointer;
     border-radius: 15px;
+    z-index: 10;
+    transition: 500ms border-radius;
 `
 
-export const YearParagraph = styled.p`
+export const DropdownParagraph = styled.p`
     font-weight: bold;
+`
+
+export const DropdownItems = styled.ul`
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    background: ${DARK_SURFACE};
+    z-index: 2;
+    border-radius: 0 0 15px 15px;
+`
+
+export const DropdownItem = styled.li`
+    width: 100%;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 500ms background;
+
+    &:hover {
+        background: ${PINK};
+    }
+
+    &:first-child {
+        padding-top: 30px;
+    }
+
+    &:last-child {
+        border-radius: 0 0 15px 15px;
+    }
 `
 
 export const Arrow = styled(Dropdown)`

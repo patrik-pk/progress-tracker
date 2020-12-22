@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
 import {
     Container,
     Wrapper,
-    YearSelect,
-    YearParagraph,
+    DropdownContainer,
+    DropdownButton,
+    DropdownParagraph,
+    DropdownItems,
+    DropdownItem,
     Arrow,
     MonthList,
     MonthItem,
@@ -12,16 +16,35 @@ import {
     AddParagraph
 } from './Styles'
 
-const Sidebar = () => {
-    const currentYear = 2020
+const Sidebar = ({ data }) => {
+    const [dropdownOpen, setDropdownOpen] = useState(false)
+    const [currentYear, setCurrentYear] = useState(2020)
 
-    const months = () => {
-        const arr = []
+    // Set current year to the closest current one
+    useEffect(() => {
+        const date = new Date()
+        const currentYear = date.getFullYear()
+        const existingYears = data.map(item => item.year)
+        const uniqueYears = existingYears.filter((year, i) => existingYears.indexOf(year) === i)
+        
+        const closestYear = uniqueYears.reduce((a, b) => 
+            Math.abs(b - currentYear) < Math.abs(a - currentYear) ? b : a
+        )
+
+        setCurrentYear(closestYear)
+    }, [data])
+
+    // Map month buttons (1-12)
+    const monthButtons = () => {
+        const matchingMonths = data.filter(item => item.year === currentYear)
+            .map(item => parseInt(item.month))
+
+        const result = []
 
         for(let i = 1; i <= 12; i++) {
             const classes = []
-            if(i < 6 || i > 8) classes.push('exists')
-            arr.push(
+            if(matchingMonths.includes(i)) classes.push('exists')
+            result.push(
                 <MonthItem 
                     as={!classes.includes('exists') ? 'li' : ''}
                     to={`/dashboard/${currentYear}/${i}`} 
@@ -33,19 +56,39 @@ const Sidebar = () => {
             )
         }
 
-        return arr
+        return result
+    }
+
+    const sidebarItems = () => {
+        const existingYears = data.map(item => item.year)
+        const uniqueYears = existingYears.filter((year, i) => existingYears.indexOf(year) === i)
+
+        return uniqueYears.map(year => 
+            <DropdownItem key={year} onClick={() => sidebarSetYear(year)}>{year}</DropdownItem>
+        )
+    }
+
+    const sidebarSetYear = year => {
+        setCurrentYear(year)
+        setDropdownOpen(false)
     }
 
     return (
         <Container>
             <Wrapper>
-                <YearSelect>
-                    <YearParagraph>{currentYear}</YearParagraph>
-                    <Arrow />
-                </YearSelect>
+                <DropdownContainer className={dropdownOpen ? 'active' : ''}>
+                    <DropdownButton className='dropdown-btn' onClick={() => setDropdownOpen(!dropdownOpen)}>
+                        <DropdownParagraph>{currentYear}</DropdownParagraph>
+                        <Arrow />
+                    </DropdownButton>
+
+                    <DropdownItems>
+                        { sidebarItems() }
+                    </DropdownItems>
+                </DropdownContainer>
 
                 <MonthList>
-                    { months() }
+                    { monthButtons() }
                 </MonthList>
 
                 <AddButton to='/dashboard/add-month'>
@@ -56,4 +99,8 @@ const Sidebar = () => {
     )
 }
 
-export default Sidebar
+const mapStateToProps = state => ({
+    data: state.months.data
+})
+
+export default connect(mapStateToProps)(Sidebar)

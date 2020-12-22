@@ -1,6 +1,9 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import './shared/style/style.css'
+
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
 import Login from './components/Auth/Login'
 import Register from './components/Auth/Register'
@@ -10,7 +13,7 @@ import GlobalStyle, { PageWrapper } from './shared/style/GlobalStyle'
 
 const App = () => {
     return (
-        <Fragment>
+        <Provider store={store}>
             <Router>
                 <PageWrapper>
                     <GlobalStyle />
@@ -22,7 +25,7 @@ const App = () => {
                     </Switch>
                 </PageWrapper>
             </Router>
-        </Fragment>
+        </Provider>
     )
 }
 

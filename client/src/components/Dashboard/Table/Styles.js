@@ -57,6 +57,7 @@ export const ActualTable = styled.table`
         minmax(150px, 1fr)
         minmax(150px, 1fr)
         minmax(150px, 1fr);
+    align-content: space-between;
     flex-grow: 1;
     min-height: 50px;
     margin-top: 30px;

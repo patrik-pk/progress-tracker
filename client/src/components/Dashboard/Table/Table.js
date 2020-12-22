@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import {
     TopContainer,
     Heading,
@@ -11,10 +12,9 @@ import {
     RowItem,
 } from './Styles'
 import { Container } from '../Styles'
-import data from '../../../temp/data'
 import months from './months'
 
-const Table = ({ match: { params } }) => {
+const Table = ({ match: { params }, data }) => {
     // if no params, redirect to most actual existing one,
     // if no params and no existing ones, render 'start by adding month...'
     // if bad params, do something
@@ -92,4 +92,8 @@ const Table = ({ match: { params } }) => {
     }
 }
 
-export default Table
+const mapStateToProps = state => ({
+    data: state.months.data
+})
+
+export default connect(mapStateToProps)(Table)
