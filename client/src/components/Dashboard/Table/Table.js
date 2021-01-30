@@ -43,15 +43,15 @@ const Table = ({ match: { params }, data }) => {
             })
 
             return (
-                <TableRow key={day.day}>
+                <TableRow key={day[mappedItemKeywords[0]]}>
                     { result }
                 </TableRow>
             )
         })
 
-        const mappedTotal = items.map(item => {
+        const mappedTotal = items.map((item, index) => {
             return (
-                <RowItem key={item.keyword}>{item.keyword === 'day' ? 'Total' : '-'}</RowItem>
+                <RowItem key={item.keyword}>{index === 0 ? 'Total' : '-'}</RowItem>
             )
         })
 

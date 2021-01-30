@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { addMonth } from '../../../redux/actions/monthActions'
+import { processData } from './logic'
 import { Container } from '../Styles'
 import {
     Heading,
@@ -11,7 +14,7 @@ import {
     Button
 } from './Styles'
 
-const AddMonth = () => {
+const AddMonth = ({ addMonth, months }) => {
     const [formData, setFormData] = useState({
         year: '',
         month: '',
@@ -34,13 +37,25 @@ const AddMonth = () => {
 
     const onSubmit = e => {
         e.preventDefault()
-        console.log(formData)
+        // console.log(formData)
         setFormData({
             year: '',
             month: '',
             items: [
                 'Day'
             ]
+        })
+
+        const { formatedItems, days } = processData(items)
+
+        console.log(formatedItems)
+        console.log(days)
+
+        addMonth({
+            year,
+            month,
+            items: formatedItems,
+            days
         })
     }
 
@@ -64,6 +79,8 @@ const AddMonth = () => {
         if(items.length > 6) result.push('max')
         return result.join(' ')
     }
+
+    // console.log(months)
 
     return (
         <Container>
@@ -118,4 +135,8 @@ const AddMonth = () => {
     )
 }
 
-export default AddMonth
+const mapStateToProps = state => ({
+    months: state.months.data
+})
+
+export default connect(mapStateToProps, { addMonth })(AddMonth)
