@@ -23,6 +23,11 @@ const AddMonth = ({ addMonth, months }) => {
         ]
     })
 
+    // TODO: Input validation on frontend 
+    // - year (1920 to currentYear + 100)
+    // - month (1 - 12)
+    // - minimalni pocet inputu na 4 (vcetne dne)
+
     const { year, month, items } = formData
 
     const onChange = (e, index) => {
@@ -37,7 +42,6 @@ const AddMonth = ({ addMonth, months }) => {
 
     const onSubmit = e => {
         e.preventDefault()
-        // console.log(formData)
         setFormData({
             year: '',
             month: '',
@@ -46,15 +50,13 @@ const AddMonth = ({ addMonth, months }) => {
             ]
         })
 
-        const { formatedItems, days } = processData(items)
-
-        console.log(formatedItems)
-        console.log(days)
+        const { formatedItems, days, amountOfWeeks } = processData(items, year, month)
 
         addMonth({
             year,
             month,
             items: formatedItems,
+            weeks: amountOfWeeks,
             days
         })
     }
@@ -79,8 +81,6 @@ const AddMonth = ({ addMonth, months }) => {
         if(items.length > 6) result.push('max')
         return result.join(' ')
     }
-
-    // console.log(months)
 
     return (
         <Container>

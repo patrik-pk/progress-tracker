@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import {
     TopContainer,
@@ -23,6 +23,10 @@ const Table = ({ match: { params }, data }) => {
         item.month === params.month
     )
 
+    // currentWeek state for week options,
+    // 0 stands for all, 1 is for week 1, etc.
+    const [currentWeek, setCurrentWeek] = useState(0)
+
     if(!matchingItem) {
         return (
             <Container>
@@ -30,25 +34,56 @@ const Table = ({ match: { params }, data }) => {
             </Container>
         )
     } else {
-        const { month, year, items, days } = matchingItem
+        const { month, year, items, weeks, days } = matchingItem
 
         const mappedItemKeywords = items.map(item => item.keyword)
+
+        // Week Options
+        const mappedWeekOptions = () => {
+            const result = []
+
+            for(let i = 0; i < weeks; i++) {
+                result.push(
+                    <OptionItem
+                        key={i + 1}
+                        className={currentWeek === i + 1 ? 'active': ''} 
+                        onClick={() => setCurrentWeek(i + 1)}
+                    >Week {i + 1}</OptionItem>
+                )
+            }
+
+            return result
+        }
+
+        // Top Row (Item Headings)
         const mappedItemNames = items.map(item => <RowItem key={item.keyword}>{item.name}</RowItem>) 
 
-        const mappedDays = days.map(day => {
+        // Data Rows
+
+        // filter days based on current week state
+        const filteredDays = (days => {
+            if(currentWeek === 0) return days
+            
+            return days.filter(day => day.week === currentWeek)
+        })(days)
+
+        // then map the filtered days into rows
+        const mappedDays = filteredDays.map(day => {
             const result = []
+            const { items: dayItems } = day
             
             mappedItemKeywords.forEach(keyword => {
-                result.push(<RowItem key={keyword}>{day[keyword] ? day[keyword] : '-'}</RowItem>)
+                result.push(<RowItem key={keyword}>{dayItems[keyword] ? dayItems[keyword] : '-'}</RowItem>)
             })
 
             return (
-                <TableRow key={day[mappedItemKeywords[0]]}>
+                <TableRow key={dayItems[mappedItemKeywords[0]]}>
                     { result }
                 </TableRow>
             )
         })
 
+        // Total Row
         const mappedTotal = items.map((item, index) => {
             return (
                 <RowItem key={item.keyword}>{index === 0 ? 'Total' : '-'}</RowItem>
@@ -61,12 +96,11 @@ const Table = ({ match: { params }, data }) => {
                     <Heading>{months[month - 1]} {year}</Heading>
 
                     <OptionsList>
-                        <OptionItem>Week 1</OptionItem>
-                        <OptionItem>Week 2</OptionItem>
-                        <OptionItem>Week 3</OptionItem>
-                        <OptionItem>Week 4</OptionItem>
-                        <OptionItem>Week 5</OptionItem>
-                        <OptionItem className='active'>All</OptionItem>
+                        { mappedWeekOptions() }
+                        <OptionItem 
+                            className={currentWeek === 0 ? 'active' : ''}
+                            onClick={() => setCurrentWeek(0)}
+                        >All</OptionItem>
                     </OptionsList>
                 </TopContainer>
 
