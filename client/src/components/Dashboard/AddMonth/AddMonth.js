@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { addMonth } from '../../../redux/actions/monthActions'
-import { processData } from './logic'
+import { validation, processData } from './logic'
 import { Container } from '../Styles'
 import {
     Heading,
@@ -11,17 +11,21 @@ import {
     Input,
     Items,
     ItemContainer,
-    Button
+    Button,
+    SubmitContainer,
+    ValidationParagraph
 } from './Styles'
 
 const AddMonth = ({ addMonth, months }) => {
+    const date = new Date()
     const [formData, setFormData] = useState({
-        year: '',
-        month: '',
+        year: date.getFullYear().toString(),
+        month: date.getMonth().toString(),
         items: [
             'Day'
-        ]
+        ],
     })
+    const [validationOutput, setValidationOutput] = useState('')
 
     // TODO: Input validation on frontend 
     // - year (1920 to currentYear + 100)
@@ -41,24 +45,32 @@ const AddMonth = ({ addMonth, months }) => {
     }
 
     const onSubmit = e => {
+
+        const { result, output } = validation(year, month, items)
+
         e.preventDefault()
-        setFormData({
-            year: '',
-            month: '',
-            items: [
-                'Day'
-            ]
-        })
-
-        const { formatedItems, days, amountOfWeeks } = processData(items, year, month)
-
-        addMonth({
-            year,
-            month,
-            items: formatedItems,
-            weeks: amountOfWeeks,
-            days
-        })
+        if(result) {
+            setFormData({
+                year: '',
+                month: '',
+                items: [
+                    'Day'
+                ]
+            })
+            setValidationOutput('')
+    
+            const { formatedItems, days, amountOfWeeks } = processData(items, year, month)
+    
+            addMonth({
+                year,
+                month,
+                items: formatedItems,
+                weeks: amountOfWeeks,
+                days
+            })
+        } else {
+            setValidationOutput(output)
+        }
     }
 
     const addItem = () => {
@@ -91,12 +103,12 @@ const AddMonth = ({ addMonth, months }) => {
 
                 <InputGroup>
                     <Paragraph>Year:</Paragraph> 
-                    <Input type='text' name='year' onChange={onChange} value={year} /> 
+                    <Input type='text' name='year' onChange={onChange} value={year} required /> 
                 </InputGroup>
 
                 <InputGroup>
                     <Paragraph>Month:</Paragraph>
-                    <Input type='text' name='month' onChange={onChange} value={month} />
+                    <Input type='text' name='month' onChange={onChange} value={month} required />
                 </InputGroup>  
 
                 <Paragraph className='input-heading'>Items</Paragraph>
@@ -114,7 +126,8 @@ const AddMonth = ({ addMonth, months }) => {
                                         <Input 
                                             type='text'  
                                             onChange={e => onChange(e, index)} 
-                                            value={item} 
+                                            value={item}
+                                            required
                                         />
                                     }
                                 </InputGroup>
@@ -129,7 +142,10 @@ const AddMonth = ({ addMonth, months }) => {
                     })}
                 </Items>
 
-                <Button className='submit' type='submit'>Submit</Button>
+                <SubmitContainer>
+                    <Button className='submit' type='submit'>Submit</Button>
+                    <ValidationParagraph>{validationOutput}</ValidationParagraph>
+                </SubmitContainer>
             </Form>    
         </Container>
     )

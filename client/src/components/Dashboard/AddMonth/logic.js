@@ -1,6 +1,58 @@
 import { v4 as uuidv4 } from 'uuid'
 import { deepCopy } from '../../../shared/utils'
 
+export const validation = (year, month, items) => {
+    const date = new Date()
+    const numReg = /^[0-9]+$/
+    let result = false
+    let output = ''
+    let correctYear = false
+    let correctMonth = false 
+    let correctItems = false
+
+    // validate year
+    if(numReg.test(year)) {
+        const numYear = parseInt(year)
+        if(numYear >= 1920 && numYear <= date.getFullYear() + 100) {
+            correctYear = true
+        }
+        
+    }
+
+    // validate month
+    if(numReg.test(month)) {
+        const numMonth = parseInt(month)
+        if(numMonth > 0 && numMonth <= 12) {
+            correctMonth = true
+        }
+    }
+
+    // validate items
+    if(items.length > 1) {
+        correctItems = true
+    }
+
+    // validation result
+    if(correctYear && correctMonth && correctItems) {
+        result = true
+    }
+
+    // validation output
+    if(!result) {
+        output += 'Please enter:'
+        if(!correctYear) output += ` a valid year (1920 - ${date.getFullYear() + 100}),`
+        if(!correctMonth) output += ` a valid month (1 - 12),`
+        if(!correctItems) output += ` atleast 2 items,`
+
+        output = output.slice(0, -1)
+    }
+
+    return {
+        result,
+        output
+    }
+}
+
 export const processData = (items, year, month) => {
     // Format items - create object with unique id and name
     // out of form input array

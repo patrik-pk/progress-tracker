@@ -35,6 +35,7 @@ const Table = ({ match: { params }, data }) => {
         )
     } else {
         const { month, year, items, weeks, days } = matchingItem
+        const itemsLength = items.length
 
         const mappedItemKeywords = items.map(item => item.keyword)
 
@@ -104,7 +105,7 @@ const Table = ({ match: { params }, data }) => {
                     </OptionsList>
                 </TopContainer>
 
-                <ActualTable className='actual-table'>
+                <ActualTable className='actual-table' length={itemsLength}>
                     <TableHead>
                         <TableRow>
                             { mappedItemNames }

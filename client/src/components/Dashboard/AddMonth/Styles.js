@@ -115,7 +115,17 @@ export const Button = styled.button`
 
     &.submit {
         width: 130px;
-        margin-top: 30px;
         border-radius: 15px;
     }
+`
+
+export const SubmitContainer = styled.div`
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+`
+
+export const ValidationParagraph = styled.p`
+    margin-left: 10px;
+    color: ${PINK};
 `

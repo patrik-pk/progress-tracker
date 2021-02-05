@@ -51,12 +51,7 @@ export const OptionItem = styled.li`
 export const ActualTable = styled.table`
     display: grid;
     border-collapse: collapse;
-    grid-template-columns: 
-        minmax(150px, 1fr)
-        minmax(150px, 1fr)
-        minmax(150px, 1fr)
-        minmax(150px, 1fr)
-        minmax(150px, 1fr);
+    grid-template-columns: repeat(${props => props.length}, minmax(150px, 1fr));
     align-content: space-between;
     flex-grow: 1;
     min-height: 50px;
